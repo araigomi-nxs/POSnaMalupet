@@ -3,6 +3,7 @@ package com.example.posnamalupet.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,6 +17,7 @@ import com.example.posnamalupet.activities.AddProductPopupActivity;
 import com.example.posnamalupet.R;
 import com.example.posnamalupet.database.DatabaseHelper;
 import com.example.posnamalupet.functions.ProductListAdapter;
+import com.example.posnamalupet.model.Product;
 
 public class ProductListActivity extends AppCompatActivity {
 
@@ -48,5 +50,16 @@ public class ProductListActivity extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                DatabaseHelper databaseHelper1 = new DatabaseHelper(null);
+                Product product = databaseHelper1.getAllProducts().get(position);
+
+                Intent intent = new Intent(ProductListActivity.this, EditProductPopupActivity.class);
+                intent.putExtra("PID", product.getId());
+                startActivity(intent);
+            }
+        });
     }
 }

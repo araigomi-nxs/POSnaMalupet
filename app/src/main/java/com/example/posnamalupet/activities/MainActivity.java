@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         BuyerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, ProductListActivity.class);
+                Intent intent= new Intent(MainActivity.this, BuyerCheckoutListActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
 
