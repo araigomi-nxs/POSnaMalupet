@@ -40,6 +40,7 @@ public class EditProductPopupActivity extends AppCompatActivity {
         Button deleteButton = findViewById(R.id.btnDelete);
         int productId = (int) getIntent().getIntExtra("productId",0);
         editButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Product product = new Product(
