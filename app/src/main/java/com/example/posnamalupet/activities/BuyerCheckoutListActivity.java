@@ -18,7 +18,6 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
     Button buttonAddProduct;
     Button buttonCheckout;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
