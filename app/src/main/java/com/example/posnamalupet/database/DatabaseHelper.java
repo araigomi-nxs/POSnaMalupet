@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public void deleteProduct(int id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("product_invetory","id=?",new String[]{String.valueOf(id)});
+        db.delete("product_inventory","id=?",new String[]{String.valueOf(id)});
     }
     public List<Product> getAllProducts(){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -61,14 +61,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     );
                     Product.addProductList(product);
                 }while(cursor.moveToNext());
-
             }
         }
-
         return Product.getAllProducts();
-
     }
-
     public void editProduct(Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
