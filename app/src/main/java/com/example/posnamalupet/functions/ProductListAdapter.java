@@ -1,6 +1,10 @@
 package com.example.posnamalupet.functions;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.activities.BuyerCheckoutListActivity;
+import com.example.posnamalupet.activities.ProductListActivity;
+import com.example.posnamalupet.database.DatabaseHelper;
 import com.example.posnamalupet.model.Product;
 
 import java.util.List;
@@ -56,12 +64,37 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
         quantitytv.setText(String.valueOf(currentProduct.getQuantity()));
         pricetv.setText(String.valueOf(currentProduct.getPrice()));
         addToCart.setVisibility(View.GONE);
-        if( mode == 1) // inventory_list
+        if( mode == 0) // buyer
         {
-            /// initialize addToCart button
-
+            addToCart.setVisibility(View.VISIBLE);
 
         }
+        Button addtoCartButton = productview.findViewById(R.id.btnAddToCart);
+
+
+        addtoCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Product selectedproduct = productList.get(position);
+                DatabaseHelper db = new DatabaseHelper(context);
+                if( selectedproduct.getQuantity() >  0)
+                {
+
+                    Log.d("productlist", "product name: " + selectedproduct.getName());
+                    int reduceProductQuantity = selectedproduct.getQuantity() - 1;
+                    selectedproduct.setQuantity(reduceProductQuantity);
+
+                    Product.setCheckoutList(new Product(selectedproduct.getId(),selectedproduct.getName(),selectedproduct.getImage(),selectedproduct.getPrice(),1));
+                    //db.editProduct(selectedproduct);
+
+                    Intent intent = new Intent(context, BuyerCheckoutListActivity.class);
+                    context.startActivity(intent);
+
+                }
+
+            }
+        });
 
         //set
         return productview;

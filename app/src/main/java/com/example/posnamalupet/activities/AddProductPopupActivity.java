@@ -53,6 +53,7 @@ public class AddProductPopupActivity extends AppCompatActivity {
         buttonAddProduct.setOnClickListener(view -> {
             addProduct(new Product(0,editTextProductName.getText().toString(),0,Double.parseDouble(editTextPrice.getText().toString()),Integer.parseInt(editTextQuantity.getText().toString()) ));
             Intent  intent = new Intent( AddProductPopupActivity.this, ProductListActivity.class);
+            intent.putExtra("REFACT", 1);
             startActivity(intent);
         });
 

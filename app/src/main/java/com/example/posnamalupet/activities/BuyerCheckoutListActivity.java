@@ -39,12 +39,17 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
         listViewCheckOutList = findViewById(R.id.lvCheckOutList);
         buttonAddProduct = findViewById(R.id.btnAddproduct);
         buttonCheckout = findViewById(R.id.btnCheckout);
+
         List<Product> checkOutProduct = Product.getAllCheckout();
         listViewCheckOutList.setAdapter(new ProductListAdapter(this,checkOutProduct,1));
+
+
+
         buttonAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BuyerCheckoutListActivity.this, ProductListActivity.class);
+                intent.putExtra("REFACT", 0);
                 startActivity(intent);
             }
         });

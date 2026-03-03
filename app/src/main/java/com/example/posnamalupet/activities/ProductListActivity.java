@@ -34,34 +34,66 @@ public class ProductListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        int referenceActivity = (int) getIntent().getIntExtra("REFACT",0);
+
 
         ListView listView = findViewById(R.id.listViewProduct);
 
 
         Button addProductButton = findViewById(R.id.btnAddProduct);
+        Button backButton = findViewById(R.id.btnBack);
+
+
+        if( referenceActivity == 0)
+        {
+            addProductButton.setVisibility(View.GONE);
+        }
+
         DatabaseHelper databaseHelper =new DatabaseHelper(ProductListActivity.this);
 
-        ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this,databaseHelper.getAllProducts() , 0);
+        ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this,databaseHelper.getAllProducts() , referenceActivity);
         listView.setAdapter(productListAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(ProductListActivity.this, "Clicked: " + position, Toast.LENGTH_SHORT).show();
-                Log.d("LV", ""+position);
+
                 Intent intent = new Intent(ProductListActivity.this, EditProductPopupActivity.class);
-               intent.putExtra("PID",position+1);
+                intent.putExtra("PID",position+1);
+
+
+                DatabaseHelper db =new DatabaseHelper(ProductListActivity.this);
+                Product selectedproduct = db.getProduct(position+1);
+
+
+
                 startActivity(intent);
 
             }
         });
+
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                Intent intent = new Intent(ProductListActivity.this, AddProductPopupActivity.class );
+
                startActivity(intent);
             }
+        });
+
+        backButton.setOnClickListener( view -> {
+            Intent intent;
+            if(referenceActivity == 0)
+            {
+               intent = new Intent(ProductListActivity.this, BuyerCheckoutListActivity.class);
+
+            }
+            else {
+                intent = new Intent(ProductListActivity.this, MainActivity.class);
+            }
+            startActivity(intent);
         });
 
 
