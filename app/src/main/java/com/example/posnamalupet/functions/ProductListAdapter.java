@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,22 +41,23 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
             productview = LayoutInflater.from(context).inflate(R.layout.product_item_card, parent, false);
         }
         Product currentProduct = productList.get(position);
-        //initialize add button
-        //id
-        //name
-        //price
-        //quantity
-        //image
+
+        TextView  productnameTV= productview.findViewById(R.id.tvProduct);
+        TextView  pricetv = productview.findViewById(R.id.tvPrice);
+        TextView quantitytv= productview.findViewById(R.id.tvQuantity);
+        ImageView imageView = productview.findViewById(R.id.imageView2);
+        TextView productIdtv= productview.findViewById(R.id.tvProductId);
+
+        productnameTV.setText(currentProduct.getName());
+        productIdtv.setText(String.valueOf(currentProduct.getId()));
+        quantitytv.setText(String.valueOf(currentProduct.getQuantity()));
+        pricetv.setText(String.valueOf(currentProduct.getPrice()));
 
         if( mode == 1) // inventory_list
         {
             /// initialize addToCart button
 
         }
-
-
-
-
         //set
 
         return productview;

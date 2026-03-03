@@ -1,4 +1,4 @@
-package com.example.posnamalupet;
+package com.example.posnamalupet.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.database.DatabaseHelper;
+import com.example.posnamalupet.model.Product;
 
 public class AddProductPopupActivity extends AppCompatActivity {
 
