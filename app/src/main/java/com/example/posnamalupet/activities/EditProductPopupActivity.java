@@ -46,10 +46,9 @@ public class EditProductPopupActivity extends AppCompatActivity {
         Log.d("test", "saaaaaaaaaaaaaaaaaaaaaaaaa"+ editProduct.getName());
 
         editProductName.setText(editProduct.getName());
-
-        editPrice.setText("" + editProduct.getPrice());
+        editPrice.setText(String.valueOf(editProduct.getPrice()));
         editQuantity.setText(String.valueOf(editProduct.getQuantity()));
-        editImage.setImageResource(editProduct.getId());
+        //editImage.setImageResource(editProduct.getId());
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
