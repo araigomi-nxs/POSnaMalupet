@@ -1,5 +1,6 @@
 package com.example.posnamalupet.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.posnamalupet.AddProductPopupActivity;
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.database.DatabaseHelper;
+import com.example.posnamalupet.functions.ProductListAdapter;
 
 public class ProductListActivity extends AppCompatActivity {
 
@@ -30,13 +34,15 @@ public class ProductListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listViewProduct);
         Button addProductButton = findViewById(R.id.btnAddProduct);
-        //ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this, ffrom db, 0);
-        // listView.setAdapter(productListAdapter);
+        DatabaseHelper databaseHelper =new DatabaseHelper(ProductListActivity.this);
+        ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this,databaseHelper.getAllProducts() , 0);
+         listView.setAdapter(productListAdapter);
 
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  Intent intent = new Intent(ProductListActivity.this, )
+               Intent intent = new Intent(ProductListActivity.this, AddProductPopupActivity.class );
+               startActivity(intent);
             }
         });
 
