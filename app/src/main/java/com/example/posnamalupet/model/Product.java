@@ -12,7 +12,8 @@ public class Product {
     private static final List<Product> productList=new ArrayList<>();
     private static final List<Product> checkoutList=new ArrayList<>();
 
-    public Product(String name,int image, double price,int quantity){
+    public Product(int id,String name,int image, double price,int quantity){
+        this.id=id;
         this.name=name;
         this.image=image;
         this.price=price;
