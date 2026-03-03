@@ -12,8 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.posnamalupet.database.DatabaseHelper;
-import com.example.posnamalupet.model.Product;
+import com.example.posnamalupet.R;
 
 public class AddProductPopupActivity extends AppCompatActivity {
 
