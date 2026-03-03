@@ -10,11 +10,15 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="8dp"
+        android:elevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -40,8 +44,13 @@
     <ListView
         android:id="@+id/lvCheckOutList"
         android:layout_width="match_parent"
+        android:background="@drawable/listview_corner"
+        android:divider="@color/green"
         android:layout_height="0dp"
+        android:dividerHeight="2dp"
         android:layout_weight="1"
+        android:layout_margin="15dp"
+        android:padding="12dp"
         />
 
     <LinearLayout
@@ -51,14 +60,25 @@
 
         <Button
             android:id="@+id/btnAddproduct"
-            android:layout_width="170dp"
+            android:layout_width="185dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="8dp"
+            android:textStyle="bold"
+            android:background="@drawable/btnbuyer_bg"
             android:layout_height="wrap_content"
             android:text="add product" />
 
         <Button
             android:id="@+id/btnCheckout"
-            android:layout_width="170dp"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:background="@drawable/btnbuyer_bg"
+            android:elevation="8dp"
             android:text="checkout" />
 
     </LinearLayout>
