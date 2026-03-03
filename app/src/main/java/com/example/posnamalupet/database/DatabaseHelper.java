@@ -64,6 +64,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return Product.getAllProducts();
     }
-
-
+    public void editProduct(int id,String name,int image, double price, int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put("name",name);
+        value.put("image",image);
+        value.put("price",price);
+        value.put("quantity",quantity);
+        db.update("product_inventory",value,"id=?",new String[]{String.valueOf(id)});
+    }
 }
