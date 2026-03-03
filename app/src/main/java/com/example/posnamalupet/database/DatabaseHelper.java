@@ -42,7 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         value.put("price",product.getPrice());
         value.put("quantity",product.getQuantity());
         db.insert("product_inventory",null,value);
-        Product.addProductList(product);
     }
     public void deleteProduct(int id){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -70,15 +69,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Product getProduct(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Product product;
+        Product product=null;
         try(Cursor cursor = db.query("product_inventory",null ,"id=?",new String[]{String.valueOf(id)},null,null,null)) {
-             product= new Product(
-                    cursor.getInt(0),       //id
-                    cursor.getString(1),    //name
-                    cursor.getInt(2),       //image
-                    cursor.getDouble(3),    //price
-                    cursor.getInt(4)        //quantity
-            );
+            if(cursor.moveToFirst()) {
+                product = new Product(
+                        cursor.getInt(0),       //id
+                        cursor.getString(1),    //name
+                        cursor.getInt(2),       //image
+                        cursor.getDouble(3),    //price
+                        cursor.getInt(4)        //quantity
+                );
+            }
         }
         return product;
     }
