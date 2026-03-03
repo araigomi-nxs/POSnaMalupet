@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:elevation="4dp"
     app:cardCornerRadius="8dp"
-    android:clickable="true"
-    android:focusable="true"
+
     android:foreground="?android:attr/selectableItemBackground"
     tools:context=".activities.ProductItemCardActivity">
 

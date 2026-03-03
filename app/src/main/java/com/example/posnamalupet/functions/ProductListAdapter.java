@@ -29,7 +29,9 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
         this.mode = mode;
 
     }
-    
+
+
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View  convertView , @Nullable ViewGroup parent)
@@ -57,6 +59,7 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
         if( mode == 1) // inventory_list
         {
             /// initialize addToCart button
+
 
         }
 

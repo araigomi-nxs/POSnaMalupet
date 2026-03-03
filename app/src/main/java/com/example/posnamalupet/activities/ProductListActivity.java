@@ -2,10 +2,12 @@ package com.example.posnamalupet.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,12 +37,25 @@ public class ProductListActivity extends AppCompatActivity {
 
 
         ListView listView = findViewById(R.id.listViewProduct);
+
+
         Button addProductButton = findViewById(R.id.btnAddProduct);
         DatabaseHelper databaseHelper =new DatabaseHelper(ProductListActivity.this);
 
         ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this,databaseHelper.getAllProducts() , 0);
-         listView.setAdapter(productListAdapter);
+        listView.setAdapter(productListAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(ProductListActivity.this, "Clicked: " + position, Toast.LENGTH_SHORT).show();
+                Log.d("LV", ""+position);
+                Intent intent = new Intent(ProductListActivity.this, EditProductPopupActivity.class);
+               intent.putExtra("PID",position+1);
+                startActivity(intent);
+
+            }
+        });
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,16 +65,6 @@ public class ProductListActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                DatabaseHelper databaseHelper1 = new DatabaseHelper(null);
-                Product product = databaseHelper1.getAllProducts().get(position);
 
-                Intent intent = new Intent(ProductListActivity.this, EditProductPopupActivity.class);
-                intent.putExtra("PID", product.getId());
-                startActivity(intent);
-            }
-        });
     }
 }

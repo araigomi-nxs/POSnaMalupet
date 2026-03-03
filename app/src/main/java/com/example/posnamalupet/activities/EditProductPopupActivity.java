@@ -3,6 +3,7 @@ package com.example.posnamalupet.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,9 @@ public class EditProductPopupActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
         });
+
         DatabaseHelper db = new DatabaseHelper(this);
         EditText editProductName = findViewById(R.id.etProductName);
         EditText editPrice = findViewById(R.id.etPrice);
@@ -40,11 +43,13 @@ public class EditProductPopupActivity extends AppCompatActivity {
         int productId = (int) getIntent().getIntExtra("PID",0);
 
         Product editProduct = db.getProduct(productId);
+        Log.d("test", "saaaaaaaaaaaaaaaaaaaaaaaaa"+ editProduct.getName());
+
         editProductName.setText(editProduct.getName());
-        String price=""+editProduct.getPrice();
-        editPrice.setText(price);
-        editQuantity.setText(editProduct.getQuantity());
-        //editImage.setImageResource(editProduct.getId());
+
+        editPrice.setText("" + editProduct.getPrice());
+        editQuantity.setText(String.valueOf(editProduct.getQuantity()));
+        editImage.setImageResource(editProduct.getId());
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
