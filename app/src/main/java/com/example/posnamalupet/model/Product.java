@@ -1,17 +1,24 @@
 package com.example.posnamalupet.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     private int id;
     private String name;
     private int image;
     private double price;
     private int quantity;
+    List<Product> productList=new ArrayList<>();
     public Product(int id,String name,int image, double price,int quantity){
         this.id=id;
         this.name=name;
         this.image=image;
         this.price=price;
         this.quantity=quantity;
+    }
+    public List<Product> getAllProducts(){
+        return productList;
     }
 
     public int getId() {
