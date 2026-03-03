@@ -66,6 +66,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return list;
     }
+    public List<Product> getAllProducts(int filter){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<Product> list = new ArrayList<>();
+        Cursor testcursor;
+
+        if( filter == 1)
+        {
+         testcursor = db.query("product_inventory", null, null, null, null, null, "name ASC");
+        }
+        else {
+            testcursor = db.query("product_inventory", null, null, null, null, null, null);
+        }
+
+        try (testcursor) {
+            if (testcursor.moveToFirst()) {
+                do {
+                    Product product = new Product(
+                            testcursor.getInt(0),       //id
+                            testcursor.getString(1),    //name
+                            testcursor.getInt(2),       //image
+                            testcursor.getDouble(3),    //price
+                            testcursor.getInt(4)        //quantity
+                    );
+                    list.add(product);
+                }while(testcursor.moveToNext());
+            }
+        }
+        return list;
+    }
 
     public Product getProduct(int id) {
         SQLiteDatabase db = this.getWritableDatabase();

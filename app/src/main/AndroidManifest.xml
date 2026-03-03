@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSnaMalupet">
         <activity
+            android:name=".activities.CheckoutPage"
+            android:exported="false" />
+        <activity
             android:name=".activities.BuyerCheckoutListActivity"
             android:exported="false" />
         <activity

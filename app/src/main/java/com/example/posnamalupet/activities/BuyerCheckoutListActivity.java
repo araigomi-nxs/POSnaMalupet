@@ -48,6 +48,16 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
         totalitemstv = findViewById(R.id.totalView);
         totalpricetv = findViewById(R.id.totalView2);
 
+        totalitemstv.setText(String.valueOf(Product.getAllCheckout().size()));
+        double totalprice = 0.0;
+
+        for(int x= 0; x < (Product.getAllCheckout().size()); x++)
+        {
+                totalprice += Product.getAllCheckout().get(x).getPrice();
+        }
+        totalpricetv.setText(String.valueOf(totalprice));
+
+
 
         DatabaseHelper db= new DatabaseHelper(this);
         List<Product> checkOutProduct = Product.getAllCheckout();
@@ -75,10 +85,12 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
                     Toast.makeText(BuyerCheckoutListActivity.this, "inside CHECKOUT", Toast.LENGTH_SHORT).show();
                     Log.d("productlist", "product name: " + product.getName()+ product.getQuantity());
                     db.editProduct(product);
+
                 }
                 Product.getAllCheckout().clear();
+                Intent intent = new Intent(BuyerCheckoutListActivity.this, CheckoutPage.class);
+                startActivity(intent);
 
-;
 
             }
         });
