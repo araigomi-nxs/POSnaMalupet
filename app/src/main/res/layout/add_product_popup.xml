@@ -10,16 +10,18 @@
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="cancel"
-        android:layout_gravity="end"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/back"
+        android:layout_gravity="start"
         />
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/profile"
         android:layout_gravity="center"
 
@@ -30,12 +32,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter product name..."
+        android:padding="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edittext_bg"
         />
 
     <EditText
         android:id="@+id/etPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="8dp"
+        android:inputType="number"
+        android:background="@drawable/edittext_bg"
         android:hint="Enter price..."
         />
 
@@ -44,13 +57,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter number of quantity..."
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="8dp"
+        android:inputType="number"
+        android:background="@drawable/edittext_bg"
         />
 
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:text="add product"
+        android:background="@drawable/btnadd_bg"
         />
 
 

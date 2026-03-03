@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="#F5F5F5"
+    android:background="@color/white"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,9 +11,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="48dp"
         android:background="@color/green"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        android:elevation="4dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,35 +22,45 @@
         android:layout_gravity="center"
         android:text="PRODUCT LIST"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:letterSpacing="0.1"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"/>
 
     <ListView
         android:id="@+id/listViewProduct"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="@color/black"
-        android:dividerHeight="1dp"
-        android:padding="8dp"
+        android:divider="@color/green"
+        android:dividerHeight="1.5dp"
+        android:padding="12dp"
+        android:background="@drawable/listview_corner"
         android:layout_margin="15dp"
-        />
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbarSize="2dp"
+        android:fastScrollEnabled="true"
+        android:fastScrollAlwaysVisible="false"/>
 
     <Button
         android:id="@+id/btnAddProduct"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/btnadd_bg"
-        android:textColor="@color/white"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:text="ADD PRODUCT"/>
-
-
+        android:textColor="@color/black"
+        android:text="ADD PRODUCT"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.05"
+        android:elevation="4dp"
+        android:stateListAnimator="@null"/>
 
 </LinearLayout>
