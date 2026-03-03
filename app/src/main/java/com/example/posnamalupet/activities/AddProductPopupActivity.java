@@ -1,6 +1,7 @@
 package com.example.posnamalupet.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +52,8 @@ public class AddProductPopupActivity extends AppCompatActivity {
 
         buttonAddProduct.setOnClickListener(view -> {
             addProduct(new Product(0,editTextProductName.getText().toString(),0,Double.parseDouble(editTextPrice.getText().toString()),Integer.parseInt(editTextQuantity.getText().toString()) ));
+            Intent  intent = new Intent( AddProductPopupActivity.this, ProductListActivity.class);
+            startActivity(intent);
         });
 
     }
@@ -60,6 +63,8 @@ public class AddProductPopupActivity extends AppCompatActivity {
         databaseHelper.addProduct(product);
 
 
+
     }
+
 
 }

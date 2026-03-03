@@ -47,19 +47,20 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
         TextView quantitytv= productview.findViewById(R.id.tvQuantity);
         ImageView imageView = productview.findViewById(R.id.imageView2);
         TextView productIdtv= productview.findViewById(R.id.tvProductId);
+        Button addToCart = productview.findViewById(R.id.btnAddToCart);
 
         productnameTV.setText(currentProduct.getName());
         productIdtv.setText(String.valueOf(currentProduct.getId()));
         quantitytv.setText(String.valueOf(currentProduct.getQuantity()));
         pricetv.setText(String.valueOf(currentProduct.getPrice()));
-
+        addToCart.setVisibility(View.GONE);
         if( mode == 1) // inventory_list
         {
             /// initialize addToCart button
 
         }
-        //set
 
+        //set
         return productview;
     }
 }
