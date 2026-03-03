@@ -2,6 +2,7 @@ package com.example.posnamalupet.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,14 +13,38 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.database.DatabaseHelper;
+import com.example.posnamalupet.model.Product;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+//NOTE: REMOVE THE COMMENTS AND CALL THE db functions
+//    void DebugSomething(){
+//        DatabaseHelper db = new DatabaseHelper(this);
+//            int id=0;
+//            db.addProduct(new Product(id++,"nigga",0,1000, 50));
+//            db.addProduct(new Product(id,"fucker",0,250, 10));
+//            List<Product> list = db.getAllProducts();
+//            for(int i=0;i< list.size(); i++){
+//                String text=
+//                        "id: "+list.get(i).getId()+
+//                                "\nname: "+list.get(i).getName()+
+//                                "\nprice: "+list.get(i).getPrice()+
+//                                "\nquantity: "+list.get(i).getQuantity();
+//                Log.d("DatabaseHelper",text);
+//            }
+//
+//        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        //DebugSomething();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -43,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 }
