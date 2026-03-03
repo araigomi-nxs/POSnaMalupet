@@ -15,10 +15,16 @@
             android:name=".AddProductPopupActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProductPopupActivity"
+            android:name=".activities.EditProductPopupActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.ProductItemCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProductListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
