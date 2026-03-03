@@ -1,9 +1,9 @@
 package com.example.posnamalupet.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,34 +13,30 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posnamalupet.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ProductListActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.product_list);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button BuyerButton = findViewById(R.id.btnBuyer);
-        Button SellerButton = findViewById(R.id.btnSeller);
 
-        BuyerButton.setOnClickListener(new View.OnClickListener() {
+        ListView listView = findViewById(R.id.listViewProduct);
+        Button addProductButton = findViewById(R.id.btnAddProduct);
+        //ProductListAdapter productListAdapter = new ProductListAdapter(ProductListActivity.this, ffrom db, 0);
+        // listView.setAdapter(productListAdapter);
+
+        addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, ProductListActivity.class);
-                startActivity(intent);
-            }
-        });
-        SellerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, ProductListActivity.class);
-                startActivity(intent);
+              //  Intent intent = new Intent(ProductListActivity.this, )
             }
         });
 

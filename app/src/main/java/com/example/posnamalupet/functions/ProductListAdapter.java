@@ -17,11 +17,13 @@ import java.util.List;
 public class ProductListAdapter  extends ArrayAdapter<Product> {
     private Context context;
     private List<Product> productList;
+    private int mode;
 
-    public ProductListAdapter(@NonNull Context context,List<Product> productList) {
+    public ProductListAdapter(@NonNull Context context,List<Product> productList, int mode) {
         super(context, 0, productList);
         this.context = context;
         this.productList =  productList;
+        this.mode = mode;
 
     }
     
@@ -33,15 +35,23 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
 
         if(productview == null)
         {
-            productview = LayoutInflater.from(context).inflate(R.layout.productItemCard, parent, false);
+            productview = LayoutInflater.from(context).inflate(R.layout.product_item_card, parent, false);
         }
         Product currentProduct = productList.get(position);
-
+        //initialize add button
         //id
         //name
         //price
         //quantity
         //image
+
+        if( mode == 1) // inventory_list
+        {
+            /// initialize addToCart button
+
+        }
+
+
 
 
         //set
