@@ -1,7 +1,9 @@
 package com.example.posnamalupet.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -12,6 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.functions.ProductListAdapter;
+import com.example.posnamalupet.model.Product;
+
+import java.util.List;
 
 public class BuyerCheckoutListActivity extends AppCompatActivity {
     ListView listViewCheckOutList;
@@ -33,7 +39,20 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
         listViewCheckOutList = findViewById(R.id.lvCheckOutList);
         buttonAddProduct = findViewById(R.id.btnAddproduct);
         buttonCheckout = findViewById(R.id.btnCheckout);
-
-
+        List<Product> checkOutProduct = Product.getAllCheckout();
+        listViewCheckOutList.setAdapter(new ProductListAdapter(this,checkOutProduct,1));
+        buttonAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BuyerCheckoutListActivity.this, AddProductPopupActivity.class);
+                startActivity(intent);
+            }
+        });
+        buttonCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //to check out
+            }
+        });
     }
 }
