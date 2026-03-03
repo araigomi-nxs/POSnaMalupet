@@ -9,9 +9,7 @@ public class Product {
     private int image;
     private double price;
     private int quantity;
-    private static final List<Product> productList=new ArrayList<>();
     private static final List<Product> checkoutList=new ArrayList<>();
-
     public Product(int id,String name,int image, double price,int quantity){
         this.id=id;
         this.name=name;
@@ -19,14 +17,17 @@ public class Product {
         this.price=price;
         this.quantity=quantity;
     }
-    public static void addProductList(Product product){
-        productList.add(product);
-    }
-    public static void addCheckoutList(Product product){
+    public static void setCheckoutList(Product product){
         checkoutList.add(product);
     }
-    public static List<Product> getAllProducts(){
-        return productList;
+    public static void deleteCheckoutProduct(int id){
+        for(int i=0; i<checkoutList.size(); i++){
+            Product product=checkoutList.get(i);
+            if(product.getId()==id){
+                checkoutList.remove(product);
+                return;
+            }
+        }
     }
     public static List<Product> getAllCheckout(){
         return checkoutList;
