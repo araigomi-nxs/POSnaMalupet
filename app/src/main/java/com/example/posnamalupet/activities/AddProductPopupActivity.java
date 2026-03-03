@@ -13,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posnamalupet.R;
+import com.example.posnamalupet.database.DatabaseHelper;
+import com.example.posnamalupet.model.Product;
 
 public class AddProductPopupActivity extends AppCompatActivity {
 
@@ -47,5 +49,17 @@ public class AddProductPopupActivity extends AppCompatActivity {
             finish();
         });
 
+        buttonAddProduct.setOnClickListener(view -> {
+            addProduct(new Product(0,editTextProductName.getText().toString(),0,Double.parseDouble(editTextPrice.getText().toString()),Integer.parseInt(editTextQuantity.getText().toString()) ));
+        });
+
     }
+    public void addProduct(Product product )
+    {
+        DatabaseHelper databaseHelper = new DatabaseHelper(AddProductPopupActivity.this);
+        databaseHelper.addProduct(product);
+
+
+    }
+
 }

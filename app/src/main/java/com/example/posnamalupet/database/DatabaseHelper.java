@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -44,26 +45,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public void deleteProduct(int id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("product_invetory","id=?",new String[]{String.valueOf(id)});
+        db.delete("product_inventory","id=?",new String[]{String.valueOf(id)});
     }
     public List<Product> getAllProducts(){
         SQLiteDatabase db = this.getWritableDatabase();
         try (Cursor cursor = db.query("product_inventory", null, null, null, null, null, null)) {
             if (cursor.moveToFirst()) {
-                Product product = new Product(
-                        cursor.getInt(0),       //id
-                        cursor.getString(1),    //name
-                        cursor.getInt(2),       //image
-                        cursor.getDouble(3),    //price
-                        cursor.getInt(4)        //quantity
-                );
-                Product.addProductList(product);
-
+                do {
+                    Product product = new Product(
+                            cursor.getInt(0),       //id
+                            cursor.getString(1),    //name
+                            cursor.getInt(2),       //image
+                            cursor.getDouble(3),    //price
+                            cursor.getInt(4)        //quantity
+                    );
+                    Product.addProductList(product);
+                }while(cursor.moveToNext());
             }
         }
         return Product.getAllProducts();
     }
-
     public void editProduct(Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
