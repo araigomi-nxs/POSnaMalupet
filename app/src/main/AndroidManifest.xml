@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSnaMalupet">
         <activity
+            android:name=".AddProductPopupActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditProductPopupActivity"
             android:exported="false" />
         <activity
