@@ -65,4 +65,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return Product.getAllProducts();
     }
 
+
 }
