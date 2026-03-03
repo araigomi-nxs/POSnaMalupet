@@ -24,6 +24,7 @@ public class ProductItemCardActivity extends AppCompatActivity {
 
 
 
+
         });
     }
 }
