@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this, BuyerCheckoutListActivity.class);
+               intent.putExtra("REFACT",0);
                 startActivity(intent);
             }
         });
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this, ProductListActivity.class);
+               intent.putExtra("REFACT",1);
                 startActivity(intent);
             }
         });

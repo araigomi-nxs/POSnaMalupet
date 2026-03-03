@@ -44,7 +44,7 @@ public class BuyerCheckoutListActivity extends AppCompatActivity {
         buttonAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BuyerCheckoutListActivity.this, AddProductPopupActivity.class);
+                Intent intent = new Intent(BuyerCheckoutListActivity.this, ProductListActivity.class);
                 startActivity(intent);
             }
         });
