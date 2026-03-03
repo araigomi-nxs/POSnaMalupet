@@ -29,7 +29,6 @@ public class EditProductPopupActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-
         });
         DatabaseHelper db = new DatabaseHelper(this);
         EditText editProductName = findViewById(R.id.etProductName);
@@ -39,8 +38,15 @@ public class EditProductPopupActivity extends AppCompatActivity {
         Button editButton = findViewById(R.id.btnUpdate);
         Button deleteButton = findViewById(R.id.btnDelete);
         int productId = (int) getIntent().getIntExtra("productId",0);
-        editButton.setOnClickListener(new View.OnClickListener() {
 
+        Product editProduct = db.getProduct(productId);
+        editProductName.setText(editProduct.getName());
+        String price=""+editProduct.getPrice();
+        editPrice.setText(price);
+        editQuantity.setText(editProduct.getQuantity());
+        //editImage.setImageResource(editProduct.getId());
+
+        editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Product product = new Product(
