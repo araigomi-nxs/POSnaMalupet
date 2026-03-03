@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.posnamalupet.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -49,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public List<Product> getAllProducts(){
         SQLiteDatabase db = this.getWritableDatabase();
+        List<Product> list = new ArrayList<>();
         try (Cursor cursor = db.query("product_inventory", null, null, null, null, null, null)) {
             if (cursor.moveToFirst()) {
                 do {
@@ -59,12 +61,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                             cursor.getDouble(3),    //price
                             cursor.getInt(4)        //quantity
                     );
-                    Product.addProductList(product);
+                    list.add(product);
                 }while(cursor.moveToNext());
             }
         }
-        return Product.getAllProducts();
+        return list;
     }
+
+
     public void editProduct(Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
