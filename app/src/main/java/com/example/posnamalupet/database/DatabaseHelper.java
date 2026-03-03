@@ -32,16 +32,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS product_inventory");
         onCreate(db);
     }
-    public void addProduct(int id,String name,int image, double price, int quantity){
+    public void addProduct(Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put("name",name);
-        value.put("image",image);
-        value.put("price",price);
-        value.put("quantity",quantity);
+        value.put("name",product.getName());
+        value.put("image",product.getImage());
+        value.put("price",product.getPrice());
+        value.put("quantity",product.getQuantity());
         db.insert("product_inventory",null,value);
-
-        Product product = new Product(id,name, image, price, quantity);
         Product.addProductList(product);
     }
     public void deleteProduct(int id){
@@ -60,17 +58,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getInt(4)        //quantity
                 );
                 Product.addProductList(product);
+
             }
         }
         return Product.getAllProducts();
     }
-    public void editProduct(int id,String name,int image, double price, int quantity){
+
+    public void editProduct(Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues value = new ContentValues();
-        value.put("name",name);
-        value.put("image",image);
-        value.put("price",price);
-        value.put("quantity",quantity);
-        db.update("product_inventory",value,"id=?",new String[]{String.valueOf(id)});
+        value.put("name",product.getName());
+        value.put("image",product.getImage());
+        value.put("price",product.getPrice());
+        value.put("quantity",product.getQuantity());
+        db.update("product_inventory",value,"id=?",new String[]{String.valueOf(product.getId())});
     }
 }
