@@ -37,7 +37,7 @@ public class EditProductPopupActivity extends AppCompatActivity {
         ImageView editImage = findViewById(R.id.ivImage);
         Button editButton = findViewById(R.id.btnUpdate);
         Button deleteButton = findViewById(R.id.btnDelete);
-        int productId = (int) getIntent().getIntExtra("productId",0);
+        int productId = (int) getIntent().getIntExtra("PID",0);
 
         Product editProduct = db.getProduct(productId);
         editProductName.setText(editProduct.getName());
