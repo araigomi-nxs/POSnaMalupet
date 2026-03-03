@@ -93,4 +93,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         value.put("quantity",product.getQuantity());
         db.update("product_inventory",value,"id=?",new String[]{String.valueOf(product.getId())});
     }
+
+
 }

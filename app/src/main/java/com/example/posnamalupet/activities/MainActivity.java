@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button BuyerButton = findViewById(R.id.btnBuyer);
         Button SellerButton = findViewById(R.id.btnSeller);
+        DatabaseHelper db = new DatabaseHelper(this);
+        Product.getTemporaryList().addAll(db.getAllProducts());
 
         BuyerButton.setOnClickListener(new View.OnClickListener() {
             @Override

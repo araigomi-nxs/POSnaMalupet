@@ -66,8 +66,6 @@ public class ProductListActivity extends AppCompatActivity {
                 DatabaseHelper db =new DatabaseHelper(ProductListActivity.this);
                 Product selectedproduct = db.getProduct(position+1);
 
-
-
                 startActivity(intent);
 
             }
@@ -78,8 +76,8 @@ public class ProductListActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                Intent intent = new Intent(ProductListActivity.this, AddProductPopupActivity.class );
-
                startActivity(intent);
+
             }
         });
 

@@ -76,7 +76,7 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
             @Override
             public void onClick(View view) {
 
-                Product selectedproduct = productList.get(position);
+                Product selectedproduct = Product.getTemporaryList().get(position);
                 DatabaseHelper db = new DatabaseHelper(context);
                 if( selectedproduct.getQuantity() >  0)
                 {
@@ -86,6 +86,11 @@ public class ProductListAdapter  extends ArrayAdapter<Product> {
                     selectedproduct.setQuantity(reduceProductQuantity);
 
                     Product.setCheckoutList(new Product(selectedproduct.getId(),selectedproduct.getName(),selectedproduct.getImage(),selectedproduct.getPrice(),1));
+
+                    Product.getTemporaryList().get(position).setQuantity(reduceProductQuantity);
+
+                    Log.d("productlist", "product quant: " +   Product.getTemporaryList().get(position).getQuantity());
+
                     //db.editProduct(selectedproduct);
 
                     Intent intent = new Intent(context, BuyerCheckoutListActivity.class);

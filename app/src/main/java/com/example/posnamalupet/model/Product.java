@@ -1,5 +1,7 @@
 package com.example.posnamalupet.model;
 
+import com.example.posnamalupet.database.DatabaseHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,8 @@ public class Product {
     private double price;
     private int quantity;
     private static final List<Product> checkoutList=new ArrayList<>();
+    private static final List<Product> temporaryList = new ArrayList<>();
+
     public Product(int id,String name,int image, double price,int quantity){
         this.id=id;
         this.name=name;
@@ -32,6 +36,10 @@ public class Product {
     public static List<Product> getAllCheckout(){
         return checkoutList;
     }
+    public static List<Product> getTemporaryList(){
+        return temporaryList;
+    }
+
     public int getId() {
         return id;
     }
@@ -71,4 +79,6 @@ public class Product {
     public void setImage(int image) {
         this.image = image;
     }
+
+
 }
