@@ -35,7 +35,6 @@ public class ProductListActivity extends AppCompatActivity {
             return insets;
         });
 
-
         ListView listView = findViewById(R.id.listViewProduct);
 
 
